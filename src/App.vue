@@ -6,7 +6,8 @@ import CustomNavbar from "@/components/CustomNavbar.vue";
 
 <template>
 <CustomNavbar />
-<router-view class="container" />
+
+<router-view />
 </template>
 
 <style scoped>

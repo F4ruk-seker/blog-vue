@@ -35,39 +35,25 @@ onMounted(async () => {
       Lastest
     </div>
   </div>
-  <div class="card-body">
+  <div class="card-body row p-0 m-0">
 
-    <div class="border-bottom pb-2" v-for="blog_text in blog_text_list">
-
-      <div class="row p-0 m-0">
-        <div class="col-12 col-sm-4 col-md-3 ">
-          <img class="ratio ratio-1x1 rounded" src="https://github.com/F4ruk-seker.png" alt="user profile picture">
-        </div>
-        <div class="col ps-2 flex-column d-flex">
-          <div class="h-25 flex-column">
-            <strong class="fw-bold text-primary" style="font-size: 24px;">
-              {{ blog_text.title }}
-            </strong>
-          </div>
-          <div class="h-100 align-content-center flex-grow-1 flex-column">
-            <p class="ms-2">
-<!--              md text-->
-              {{ blog_text.explanation }}
-
-            </p>
-          </div>
-          <div class="h-25 my-auto flex-column" >
-            <router-link
-                class="btn btn-primary fw-semibold"
+    <div class="col-3 p-1 " v-for="blog_text in blog_text_list">
+      <div class="card" >
+        <img class="card-img-top" src="https://github.com/F4ruk-seker.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ blog_text.title }}</h5>
+          <p class="card-text">{{ blog_text.explanation }}</p>
+          <router-link
+              class="btn btn-primary fw-semibold"
               :to="{
                 name: 'blog_read',
                 params: {
                   'slug': blog_text.slug ? blog_text.slug : blog_text.id,
                    }
               }"
-            >OKU</router-link>
-
-          </div>
+          >
+            OKU
+          </router-link>
         </div>
       </div>
 

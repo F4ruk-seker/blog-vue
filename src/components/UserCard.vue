@@ -4,7 +4,7 @@
 
 <template>
   <section class="">
-    <div class="card w-100">
+    <div class="card shadow w-100">
       <div class="card-header justify-content-between d-flex">
       <span style="width: 70px">
         <i class="fa-solid fa-user"></i>
@@ -18,8 +18,8 @@
         </div>
       </div>
 
-      <div class="card-body d-flex row p-0 m-0">
-        <div class="col-12 col-sm-4 col-md-3">
+      <div class="card-body">
+        <div class="w-50 mx-auto">
           <img class=" ratio ratio-1x1 rounded-circle" src="https://github.com/F4ruk-seker.png" alt="user profile picture">
         </div>
         <div class="col my-auto ms-3">

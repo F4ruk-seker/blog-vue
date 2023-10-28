@@ -6,23 +6,16 @@ import BlogPreView from "@/components/BlogPreView.vue";
 
 <template>
 <!-- Main User detail -->
-<main class="">
 
-  <user-card class="shadow" />
-  <div class="d-flex my-2">
-    <button class="btn btn-outline-primary" style="width: 100px" >
-      <i class="fa-solid fa-moon text-warning"></i>
-      <strong class="fw-bold">
-        Auto
-      </strong>
-    </button>
-    <hr class="w-100 ms-2 my-auto">
+
+<main class="container-fluid">
+  <div class="row m-0 mt-3 p-0">
+    <user-card class="col-12 col-sm-4 col-lg-3" />
+    <BlogPreView class="col-12 col-sm-8 col-lg-9" />
   </div>
 
-  <BlogPreView />
 </main>
 </template>
 
 <style scoped>
-
 </style>
