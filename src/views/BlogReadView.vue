@@ -1,6 +1,8 @@
 <script setup>
 import {computed, ref} from "vue";
-import { db } from '@/firebase'
+import { db, storage } from '@/firebase'
+import { getDownloadURL, ref as firebaseRef } from "firebase/storage"
+
 import { collection, getDocs, DocumentReference, getDoc } from "firebase/firestore"
 import { onMounted } from "vue";
 import { useRouter, useRoute } from 'vue-router'
@@ -14,8 +16,17 @@ function complete_markdown(context){
   return marked(context, { sanitize: true });
 }
 
-onMounted(async () => {
+async function download_markdown(file_name) {
+  const markdown_ref = firebaseRef(storage, 'markdowns/' + file_name)
+  if (markdown_ref){
+    const download_url = await getDownloadURL(markdown_ref)
+    const response = await fetch(download_url)
+    return await response.text()
+  }
 
+}
+
+onMounted(async () => {
 
   const blog_context_query_snapshot = await getDocs(collection(db, 'blog_context'))
 
@@ -45,7 +56,8 @@ onMounted(async () => {
       date: formattedDate
     }
     blog_context.value.explanation_completed_markdown = complete_markdown(blog_context.value.explanation)
-    blog_context.value.content_completed_markdown = complete_markdown(blog_context.value.content)
+    const content_context = await download_markdown(blog_context.value.content)
+    blog_context.value.content_completed_markdown = complete_markdown(content_context)
   }
 })
 
@@ -79,10 +91,22 @@ function formatDistanceToNow(date) {
 </script>
 
 <template>
-<section class="shadow">
-  <div class="card">
-    <div class="card-header fw-semibold text-primary font-monospace">
-      {{ blog_context.title }}
+<section class="">
+  <div class="card shadow">
+    <div class="card-header justify-content-between position-relative d-flex fw-semibold text-primary font-monospace">
+      <div class="d-flex my-auto">
+        <router-link class="z-1 text-secondary" :to="{name:'home_page'}">
+          <i class="fa-solid fa-arrow-left m-auto"></i>
+        </router-link>
+        <hr class="vr p-0 m-0 mx-2">
+        <span class="">
+          {{ blog_context.title }}
+        </span>
+      </div>
+      <span class="z-0 text-secondary text-center position-absolute w-100 mx-auto">Blog Reader</span>
+      <router-link class="z-1 text-danger" :to="{name:'home_page'}">
+        <i class="fa-solid fa-xmark"></i>
+      </router-link>
     </div>
     <div class="card-body">
       <p>Ön yazı</p>
@@ -102,6 +126,25 @@ function formatDistanceToNow(date) {
         <i class="fa-regular fa-eye"></i>
         0@
       </span>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <div class="z-1">
+        <i class="fa-regular fa-comments"></i>
+        Yorumlar
+        /
+        <a href="#" class="fw-semibold text-decoration-none link-primary"><i class="fa-solid fa-plus"></i> Yorum Yap</a>
+
+      </div>
+      <div class="z-0 w-100 position-absolute text-center">
+        <strong>Comment Reader</strong>
+        <span class="mx-2"></span>
+      </div>
+      <div class="z-1">x</div>
     </div>
   </div>
 </section>
