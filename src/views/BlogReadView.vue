@@ -1,19 +1,21 @@
 <script setup>
-import { ref } from "vue";
+import {computed, ref} from "vue";
 import { db } from '@/firebase'
 import { collection, getDocs, DocumentReference, getDoc } from "firebase/firestore"
 import { onMounted } from "vue";
-import TestView from "@/views/BlogReadView.vue";
 import { useRouter, useRoute } from 'vue-router'
-
+import {marked} from "marked";
 
 const blog_context = ref({})
 const route = useRoute()
 const router = useRouter()
 
+function complete_markdown(context){
+  return marked(context, { sanitize: true });
+}
+
 onMounted(async () => {
 
-  console.log(route.params.slug)
 
   const blog_context_query_snapshot = await getDocs(collection(db, 'blog_context'))
 
@@ -32,6 +34,7 @@ onMounted(async () => {
   }
 
   if (blog_context){
+
     const date = new Date(blog_context.value.created.seconds * 1000 + blog_context.value.created.nanoseconds / 1000000);
     const human_readable_time = formatDistanceToNow(date)
     // Format the date as a human-readable string
@@ -41,8 +44,11 @@ onMounted(async () => {
       readable: human_readable_time,
       date: formattedDate
     }
+    blog_context.value.explanation_completed_markdown = complete_markdown(blog_context.value.explanation)
+    blog_context.value.content_completed_markdown = complete_markdown(blog_context.value.content)
   }
 })
+
 
 function formatDistanceToNow(date) {
   const now = new Date();
@@ -73,20 +79,16 @@ function formatDistanceToNow(date) {
 </script>
 
 <template>
-<section class="">
+<section class="shadow">
   <div class="card">
     <div class="card-header fw-semibold text-primary font-monospace">
       {{ blog_context.title }}
     </div>
     <div class="card-body">
       <p>Ön yazı</p>
-      <p>
-        {{ blog_context.explanation }}
-      </p>
-      <hr class="w-25">
-      <p>
-        {{ blog_context.content}}
-      </p>
+      <p v-html="blog_context.explanation_completed_markdown"></p>
+      <hr class="w-25 bg-secondary">
+      <p v-html="blog_context.content_completed_markdown"></p>
     </div>
     <div class="card-footer justify-content-between d-flex">
       <span>
