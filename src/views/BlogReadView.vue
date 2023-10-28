@@ -124,14 +124,14 @@ function formatDistanceToNow(date) {
       </span>
       <span>
         <i class="fa-regular fa-eye"></i>
-        0@
+        0
       </span>
     </div>
   </div>
 
   <hr>
 
-  <div class="card">
+  <div class="card shadow">
     <div class="card-header d-flex justify-content-between">
       <div class="z-1">
         <i class="fa-regular fa-comments"></i>
@@ -146,7 +146,23 @@ function formatDistanceToNow(date) {
       </div>
       <div class="z-1">x</div>
     </div>
+  <div class="card-body">
+    <div class="row p-0 m-0">
+      <div class="col-2 col-lg-1">
+        <img class=" ratio ratio-1x1 rounded-circle" src="https://github.com/F4ruk-seker.png" alt="user profile picture">
+      </div>
+      <div class="col">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, iure.
+        <span class="text-secondary">
+            <i class="fa-regular fa-clock"></i>
+        </span>
+      </div>
+    </div>
   </div>
+  <div class="card-footer">
+
+  </div>
+</div>
 </section>
 </template>
 

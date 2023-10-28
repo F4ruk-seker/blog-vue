@@ -38,7 +38,7 @@ onMounted(async () => {
   <div class="card-body row p-0 m-0">
 
     <div class="col-6 col-md-3 p-1 " v-for="blog_text in blog_text_list">
-      <router-link class="card" :to="{
+      <router-link class="card text-decoration-none" :to="{
                 name: 'blog_read',
                 params: {
                   'slug': blog_text.slug ? blog_text.slug : blog_text.id,
@@ -47,7 +47,7 @@ onMounted(async () => {
         <img class="card-img-top" src="https://github.com/F4ruk-seker.png" alt="Card image cap">
 
         <div class="card-body  mx-auto w-100 text-center ">
-          <h5 class="card-title">{{ blog_text.title }}</h5>
+          <h5 class="card-title ">{{ blog_text.title }}</h5>
           <hr class="bg-secondary-subtle">
           <p class="card-text">{{ blog_text.explanation }}</p>
         </div>
