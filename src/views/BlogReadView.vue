@@ -100,7 +100,7 @@ function formatDistanceToNow(date) {
       </span>
       <span>
         <i class="fa-regular fa-eye"></i>
-        0
+        0@
       </span>
     </div>
   </div>
