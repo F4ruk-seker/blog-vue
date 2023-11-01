@@ -7,6 +7,7 @@ import { collection, getDocs, DocumentReference, getDoc } from "firebase/firesto
 import { onMounted } from "vue";
 import { useRouter, useRoute } from 'vue-router'
 import {marked} from "marked";
+import UserComment from "@/UserComment.vue";
 
 const blog_context = ref({})
 const route = useRoute()
@@ -58,6 +59,7 @@ onMounted(async () => {
     blog_context.value.explanation_completed_markdown = complete_markdown(blog_context.value.explanation)
     const content_context = await download_markdown(blog_context.value.content)
     blog_context.value.content_completed_markdown = complete_markdown(content_context)
+    // blog_context.value
   }
 })
 
@@ -130,39 +132,7 @@ function formatDistanceToNow(date) {
   </div>
 
   <hr>
-
-  <div class="card shadow">
-    <div class="card-header d-flex justify-content-between">
-      <div class="z-1">
-        <i class="fa-regular fa-comments"></i>
-        Yorumlar
-        /
-        <a href="#" class="fw-semibold text-decoration-none link-primary"><i class="fa-solid fa-plus"></i> Yorum Yap</a>
-
-      </div>
-      <div class="z-0 w-100 position-absolute text-center">
-        <strong>Comment Reader</strong>
-        <span class="mx-2"></span>
-      </div>
-      <div class="z-1">x</div>
-    </div>
-  <div class="card-body">
-    <div class="row p-0 m-0">
-      <div class="col-2 col-lg-1">
-        <img class=" ratio ratio-1x1 rounded-circle" src="https://github.com/F4ruk-seker.png" alt="user profile picture">
-      </div>
-      <div class="col">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, iure.
-        <span class="text-secondary">
-            <i class="fa-regular fa-clock"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="card-footer">
-
-  </div>
-</div>
+  <UserComment />
 </section>
 </template>
 

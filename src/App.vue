@@ -22,12 +22,12 @@ import UserCard from "@/components/UserCard.vue";
           <input class="form-control border-primary-subtle" type="search" placeholder="search">
         </div>
         <hr>
-        <section>
+        <section class="mb-3">
           <div class="card shadow w-100">
             <div class="card-header justify-content-between d-flex">
-      <span style="width: 80px">
-        <i class="fa-regular fa-clock"></i>
-      </span>
+            <span style="width: 80px">
+              <i class="fa-regular fa-clock"></i>
+            </span>
               <span class="w-100 text-center">Son Olaylar</span>
               <div class="d-flex">
                 <div class="btn btn-light btn-sm p-0 px-1 m-0" @click="field = !field">
@@ -39,10 +39,30 @@ import UserCard from "@/components/UserCard.vue";
             </div>
             <Transition>
               <div class="card-body">
-                s
+                .
               </div>
             </Transition>
           </div>
+        </section>
+
+        <section class="card shadow d-none d-md-block">
+          <div class="card-header fw-semibold">Resmi Bildiri</div>
+          <div class="card-body">
+            <p class="ms-1">
+              <strong>Kişisel Blog İçeriği Hakkında</strong>
+              <br>
+              <br>Bu web sayfası, şahsi görüşlerimi, deneyimlerimi ve düşüncelerimi paylaşmak amacıyla oluşturulmuş bir kişisel blogdur.
+              <br>İçeriklerim, tamamen benim kişisel fikirlerim, deneyimlerim ve görüşlerim doğrultusunda oluşturulmuştur.
+              <br>Bu blogda yer alan yazılarım,
+              <br>resmi ve bilimsel bir kaynak oluşturmamaktadır ve herhangi bir konuda kesin bilgi sağlama iddiasında bulunmamaktadır.
+              <br>Bu blogda yer alan içeriklerimin tüm hakları saklıdır.
+              <br>İzinsiz kopyalanması, çoğaltılması veya kullanılması yasaktır.
+              <br>Bu blogdaki yazılarımı paylaşmak isterseniz, lütfen benimle iletişime geçiniz ve izin alınız.
+              <br>Bu blogu ziyaret ederek, yukarıda belirtilen koşulları kabul etmiş sayılırsınız.
+              <br><span class="text-danger">Not</span>: Bu blogda yer alan görüşler ve düşünceler, yalnızca beni bağlar ve başkalarını temsil etmez.
+            </p>
+          </div>
+          <div class="card-footer">01.11.2023</div>
         </section>
       </aside>
       <section class="col-12 col-sm-8 col-lg-9">
@@ -52,6 +72,27 @@ import UserCard from "@/components/UserCard.vue";
 
   </main>
 
+  <hr class="shadow">
+
+  <section class="card shadow d-block d-md-none">
+    <div class="card-header fw-semibold">Resmi Bildiri</div>
+    <div class="card-body">
+      <p class="ms-1">
+        <strong>Kişisel Blog İçeriği Hakkında</strong>
+        <br>
+        <br>Bu web sayfası, şahsi görüşlerimi, deneyimlerimi ve düşüncelerimi paylaşmak amacıyla oluşturulmuş bir kişisel blogdur.
+        <br>İçeriklerim, tamamen benim kişisel fikirlerim, deneyimlerim ve görüşlerim doğrultusunda oluşturulmuştur.
+        <br>Bu blogda yer alan yazılarım,
+        <br>resmi ve bilimsel bir kaynak oluşturmamaktadır ve herhangi bir konuda kesin bilgi sağlama iddiasında bulunmamaktadır.
+        <br>Bu blogda yer alan içeriklerimin tüm hakları saklıdır.
+        <br>İzinsiz kopyalanması, çoğaltılması veya kullanılması yasaktır.
+        <br>Bu blogdaki yazılarımı paylaşmak isterseniz, lütfen benimle iletişime geçiniz ve izin alınız.
+        <br>Bu blogu ziyaret ederek, yukarıda belirtilen koşulları kabul etmiş sayılırsınız.
+        <br><span class="text-danger">Not</span>: Bu blogda yer alan görüşler ve düşünceler, yalnızca beni bağlar ve başkalarını temsil etmez.
+      </p>
+    </div>
+    <div class="card-footer">01.11.2023</div>
+  </section>
 
 </template>
 
