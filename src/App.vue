@@ -65,7 +65,7 @@ import UserCard from "@/components/UserCard.vue";
           <div class="card-footer">01.11.2023</div>
         </section>
       </aside>
-      <section class="col-12 col-sm-8 col-lg-9">
+      <section class="col-12 col-sm-8 col-lg-9 border-start">
         <router-view />
       </section>
     </div>
