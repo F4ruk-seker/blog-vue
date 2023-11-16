@@ -7,7 +7,12 @@ YAZARIN BAŞINA GELENLER
 ```
 
 Yazarımız beyzbol oynayan bir genç ve bu maçların birinde
-burnuna iki gözün hizasıyla arada, askeri terimde 'FATAL T' olarak da bilinen bir açıdan kafasına hasar alıyor ve zoraki bir şekilde revire sonra yerel hstaneye sonrasında 20 doktor ve cerahın karşıladığı helikopter ile büyük bir 
+burnuna iki gözün hizasıyla arada, askeri terimde 'FATAL T' 
+<br>
+<strong style="color:red">Not</strong>
+*'iki kaşın ortasının biraz üzeri bu hiazda omirilk ile beyin bağlantı noktası vardır'*
+<br>
+olarak da bilinen bir açıdan kafasına hasar alıyor ve zoraki bir şekilde revire sonra yerel hstaneye sonrasında 20 doktor ve cerahın karşıladığı helikopter ile büyük bir 
 hastaneye sevk ediliyor, hastanede solunum yetersizliğinden dolayı doktorlar onu ilaç ile komaya sokuyor.
 Bundan 10 yıl once kardeşinin bu hastanede lösemi tedavisi görmüş olması 
 da ailesi tarafından ne cabası 
