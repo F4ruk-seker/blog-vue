@@ -4,6 +4,15 @@ import TheWelcome from './components/TheWelcome.vue'
 import CustomNavbar from "@/components/CustomNavbar.vue";
 import BlogPreView from "@/components/BlogPreView.vue";
 import UserCard from "@/components/UserCard.vue";
+
+const data = () => {
+  return {
+    userTheme: "light-theme",
+  };
+}
+
+
+
 </script>
 
 <template>
@@ -44,7 +53,7 @@ import UserCard from "@/components/UserCard.vue";
             </Transition>
           </div>
         </section>
-
+        <hr>
         <section class="card shadow d-none d-md-block">
           <div class="card-header fw-semibold">Resmi Bildiri</div>
           <div class="card-body">
@@ -96,36 +105,35 @@ import UserCard from "@/components/UserCard.vue";
 
 </template>
 
-<style scoped>
-*{
-  background-color: var(--bs-light);
+<style>
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
-/*
-header {
-  line-height: 1.5;
+/* Define styles for the default root window element */
+:root {
+  --background-color-primary: var(--bs-light);
+  --background-color-secondary: #fafafa;
+  --accent-color: #cacaca;
+  --element-size: 4rem;
+  --text-primary-color: var(--bs-dark);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+/* Define styles for the root window with dark - mode preference */
+:root.dark-theme {
+  --background-color-primary: #1e1e1e;
+  --background-color-secondary: #2d2d30;
+  --accent-color: #3f3f3f;
+  --text-primary-color: var(--bs-light);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+p {
+  color: var(--text-primary-color);
 }
-*/
+
+.card-body{
+  background-color: var(--background-color-primary);
+}
+
 </style>

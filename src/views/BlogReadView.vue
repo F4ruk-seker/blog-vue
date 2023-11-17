@@ -136,6 +136,10 @@ function formatDistanceToNow(date) {
 </section>
 </template>
 
-<style scoped>
-
+<style >
+pre{
+  border: 1px solid var(--bs-secondary-bg);
+  padding: .5rem;
+  background-color: var(--bs-secondary-bg);
+}
 </style>

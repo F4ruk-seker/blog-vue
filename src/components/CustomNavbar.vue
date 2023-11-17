@@ -1,33 +1,134 @@
 <script>
 export default {
-  name: "CustomNavbar"
-}
+  mounted() {
+    const initUserTheme = this.getTheme() || this.getMediaPreference();
+    this.setTheme(initUserTheme);
+  },
+
+  data() {
+    return {
+      userTheme: "light-theme",
+    };
+  },
+
+  methods: {
+    toggleTheme() {
+      const activeTheme = localStorage.getItem("user-theme");
+      if (activeTheme === "light-theme") {
+        this.setTheme("dark-theme");
+      } else {
+        this.setTheme("light-theme");
+      }
+    },
+
+    getTheme() {
+      return localStorage.getItem("user-theme");
+    },
+
+    setTheme(theme) {
+      localStorage.setItem("user-theme", theme);
+      this.userTheme = theme;
+      document.documentElement.className = theme;
+    },
+
+    getMediaPreference() {
+      const hasDarkPreference = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+      ).matches;
+      if (hasDarkPreference) {
+        return "dark-theme";
+      } else {
+        return "light-theme";
+      }
+    },
+  },
+};
 </script>
 
 <template>
 <div class="bg-secondary text-center" style="height: 20vh">
   <strong >BANNER</strong>
 </div>
-<nav class="position-sticky position-absolute z-3 top-0 bg-dark border-light border-0 border-bottom">
+<nav class="position-sticky position-absolute z-3 top-0 bg-dark">
 <div class="container justify-content-between d-flex py-2">
-  <strong class="breadcrumb-item text-light my-auto">
-    <i class="fa-solid fa-blog"></i>
-    Blog
-  </strong>
-  <div></div>
-  <div>
-    <button class="btn btn-outline-primary" style="width: 100px" >
-      <i class="fa-solid fa-moon text-warning"></i>
-      <strong class="fw-bold">
-        Auto
-      </strong>
-    </button>
-    <button class="btn btn-sm btn-success">Login</button>
+  <router-link
+      class="text-decoration-none my-auto"
+      :to="{
+    name: 'home_page'
+  }"
+      style="width: 100px"
+  >
+    <strong class="breadcrumb-item text-light my-auto">
+      <i class="fa-solid fa-blog"></i>
+      Blog
+    </strong>
+  </router-link>
+  <div class="w-100">
+    <input class="form-control form-control-sm w-100" placeholder="Arama">
+  </div>
+  <div class="text-end ms-3">
+
+    <input
+        @change="toggleTheme"
+        id="checkbox"
+        type="checkbox"
+        class="switch-checkbox"
+    />
+    <label for="checkbox" class="switch-label">
+      <span>🌙</span>
+      <span>☀️</span>
+      <div
+          class="switch-toggle"
+          :class="{ 'switch-toggle-checked': userTheme === 'dark-theme' }"
+      ></div>
+    </label>
+
+<!--    <button class="btn btn-sm btn-secondary shadow" style="width: 100px" @click="change_theme_mode">-->
+<!--      <i class="fa-solid fa-moon text-warning"></i>-->
+<!--      <strong class="fw-bold">-->
+<!--        Auto-->
+<!--      </strong>-->
+<!--    </button>-->
   </div>
 </div>
 </nav>
 </template>
 
 <style scoped>
+.switch-checkbox {
+  display: none;
+}
 
+.switch-label {
+  align-items: center;
+  background: var(--text-primary-color);
+  border: calc(var(--element-size) * 0.025) solid var(--accent-color);
+  border-radius: var(--element-size);
+  cursor: pointer;
+  display: flex;
+  font-size: calc(var(--element-size) * 0.3);
+  height: calc(var(--element-size) * 0.35);
+  position: relative;
+  padding: calc(var(--element-size) * 0.1);
+  transition: background 0.5s ease;
+  justify-content: space-between;
+  width: var(--element-size);
+  z-index: 1;
+}
+
+.switch-toggle {
+  position: absolute;
+  background-color: var(--background-color-primary);
+  border-radius: 50%;
+  top: calc(var(--element-size) * 0.07);
+  left: calc(var(--element-size) * 0.07);
+  height: calc(var(--element-size) * 0.4);
+  width: calc(var(--element-size) * 0.4);
+  transform: translateX(0);
+  transition: transform 0.3s ease, background-color 0.5s ease;
+}
+
+.switch-toggle-checked {
+  transform: translateX(calc(var(--element-size) * 0.6)) !important;
+}
 </style>
